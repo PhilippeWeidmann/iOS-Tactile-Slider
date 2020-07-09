@@ -347,7 +347,7 @@ import UIKit
 		} else if value == maximum && valueChange > 0 {
 			// already hit maximum, don't change the value
 		} else {
-			
+			let oldValue = value
 			let newValue = value + valueChange
 			setValue(newValue, animated: false)
 			
@@ -358,7 +358,7 @@ import UIKit
 					minMaxFeedbackGenerator = UIImpactFeedbackGenerator(style: feedbackStyle)
 					minMaxFeedbackGenerator?.prepare()
 				case .changed:
-					if newValue != value {
+					if newValue != oldValue {
 						minMaxFeedbackGenerator?.impactOccurred()
 						minMaxFeedbackGenerator?.prepare()
 					}
